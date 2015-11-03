@@ -1,18 +1,24 @@
-var gulp 		= require('gulp'),
-	plumber		= require('gulp-plumber'),
-	koutoSwiss	= require('kouto-swiss'),
-	prefixer	= require('autoprefixer-stylus'),
-	jeet		= require('jeet'),
-	rupture		= require('rupture'),
-	minHtml 	= require('gulp-minify-html'),
-	browserSync = require('browser-sync'),
-    stylus 		= require('gulp-stylus'),
-	uglify 		= require('gulp-uglify'),
-	concat 		= require('gulp-concat'),
-	minifyCss 	= require('gulp-minify-css'),
-	imagemin   	= require('gulp-imagemin'),
-	concatCss 	= require('gulp-concat-css')
-	deploy		= require('gulp-gh-pages');
+'use strict';
+
+var gulp 					=  require('gulp')
+	 ,plumber				=  require('gulp-plumber')
+	 ,stylus 				=  require('gulp-stylus')
+	 ,koutoSwiss		=  require('kouto-swiss')
+	 ,jeet					=  require('jeet')
+	 ,rupture				=  require('rupture')
+	 ,uglify 				=  require('gulp-uglify')
+	 ,concat 				=  require('gulp-concat')
+	 ,imagemin   		=  require('gulp-imagemin')
+	 ,browserSync 	=  require('browser-sync')
+	 ,concatCss 		=  require('gulp-concat-css')
+	 ,prefixer			=  require('autoprefixer-stylus')
+	 ,minHtml 			=  require('gulp-minify-html')
+	 ,minifyCss 		=  require('gulp-minify-css')
+	 ,deploy				=  require('gulp-gh-pages');
+
+
+
+
 
 gulp.task('browser-sync', function () {
    var files = [
