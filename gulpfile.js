@@ -41,7 +41,7 @@ gulp.task('fonts', function(){
 });
 
 gulp.task('scripts', function(){
-	gulp.src('app/src/js/*.js') 
+	gulp.src('app/src/js/*.js')
 	.pipe(concat('all.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('build/js'))
@@ -58,7 +58,7 @@ gulp.task('stylus', function(){
 		.pipe(gulp.dest('build/css'))
 });
 
- 
+
 
 gulp.task('css', function(){
 	gulp.src('app/src/css/*.css')

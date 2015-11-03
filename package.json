@@ -1,12 +1,12 @@
 {
-  "name": "teste-neo",
+  "name": "dialetus",
   "version": "1.0.0",
-  "description": "Teste para entrevista de emprego, plataforma neo",
+  "description": "A compilation of the most varied dialects spoken around Brazil",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "jjaderg",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer-stylus": "^0.8.0",
