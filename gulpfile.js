@@ -2,19 +2,19 @@
 
 //...... Load all of our dependencies ......
 
-var gulp 					=  require('gulp')
-	 ,plumber				=  require('gulp-plumber')
-	 ,stylus 				=  require('gulp-stylus')
-	 ,koutoSwiss		=  require('kouto-swiss')
-	 ,jeet					=  require('jeet')
-	 ,rupture				=  require('rupture')
-	 ,uglify 				=  require('gulp-uglify')
-	 ,concat 				=  require('gulp-concat')
-	 ,imagemin   		=  require('gulp-imagemin')
-	 ,browserSync 	=  require('browser-sync')
-	 ,prefixer			=  require('autoprefixer-stylus')
-	 ,minHtml 			=  require('gulp-minify-html')
-	 ,deploy				=  require('gulp-gh-pages');
+var gulp 				= require('gulp')
+	 ,plumber			= require('gulp-plumber')
+	 ,stylus 			= require('gulp-stylus')
+	 ,koutoSwiss	= require('kouto-swiss')
+	 ,jeet				= require('jeet')
+	 ,rupture			= require('rupture')
+	 ,uglify 			= require('gulp-uglify')
+	 ,concat 			= require('gulp-concat')
+	 ,imagemin   	= require('gulp-imagemin')
+	 ,browserSync = require('browser-sync')
+	 ,prefixer		= require('autoprefixer-stylus')
+	 ,minHtml 		= require('gulp-minify-html')
+	 ,deploy			= require('gulp-gh-pages');
 
 
 //...... Launch the Server and reload browsers ......
@@ -86,7 +86,7 @@ gulp.task('watch', function () {
 });
 
 
-//...... just run gulp deploy-pages to send build files to gh-pages ......
+//...... Just run gulp deploy-pages to send build files to gh-pages ......
 
 gulp.task('deploy-pages', function () {
   return gulp.src("build/**/*")
