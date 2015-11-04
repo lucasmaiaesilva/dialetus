@@ -12,7 +12,6 @@ var gulp 					=  require('gulp')
 	 ,concat 				=  require('gulp-concat')
 	 ,imagemin   		=  require('gulp-imagemin')
 	 ,browserSync 	=  require('browser-sync')
-	 ,concatCss 		=  require('gulp-concat-css')
 	 ,prefixer			=  require('autoprefixer-stylus')
 	 ,minHtml 			=  require('gulp-minify-html')
 	 ,minifyCss 		=  require('gulp-minify-css')
@@ -46,46 +45,45 @@ gulp.task('imagemin', function() {
 });
 
 
+//...... Scripts Task - compiling our Javascripts ......
 
 gulp.task('scripts', function(){
 	gulp.src('app/src/js/*.js')
-	.pipe(concat('all.min.js'))
-	.pipe(uglify())
-	.pipe(gulp.dest('build/js'))
+		.pipe(concat('all.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('build/js'))
 });
+
+
+//...... Stylus Task - compiling our Stylus files ......
 
 gulp.task('stylus', function(){
 		gulp.src('app/src/styl/main.styl')
-		.pipe(plumber())
-		.pipe(stylus({
-			use:[koutoSwiss(), prefixer(), jeet(),rupture()],
+			.pipe(plumber())
+			.pipe(stylus({
+					use:[koutoSwiss(), prefixer(), jeet(),rupture()],
 			compress: true
 		}))
-		.pipe(browserSync.reload({stream:true}))
-		.pipe(gulp.dest('build/css'))
+			.pipe(browserSync.reload({stream:true}))
+			.pipe(gulp.dest('build/css'))
 });
 
 
-
-gulp.task('css', function(){
-	gulp.src('app/src/css/*.css')
-	.pipe(minifyCss())
-	.pipe(concatCss('plugins.min.css'))
-	.pipe(gulp.dest('build/css'))
-});
+//...... Html Task - minify html files ......
 
 gulp.task('html', function () {
   gulp.src('app/**/*.html')
-  	///.pipe(minHtml())
-	.pipe(gulp.dest('build/'))
+  	.pipe(minHtml())
+		.pipe(gulp.dest('build/'))
 });
+
+
+//...... Watch stylus, html and js files for changes & recompile. Before, run project & reload BrowserSync ......
 
 gulp.task('watch', function () {
   gulp.watch(['app/**/*.html'], ['html']);
   gulp.watch('app/src/js/*.js', ['scripts']);
-  gulp.watch('app/src/css/*.css', ['css']);
   gulp.watch('app/src/styl/*.styl', ['stylus']);
-  //gulp.watch('app/src/fonts/**/*', ['fonts']);
 });
 
 // just run gulp deploy-pages to send build files to gh-pages
