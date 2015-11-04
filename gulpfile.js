@@ -14,7 +14,6 @@ var gulp 					=  require('gulp')
 	 ,browserSync 	=  require('browser-sync')
 	 ,prefixer			=  require('autoprefixer-stylus')
 	 ,minHtml 			=  require('gulp-minify-html')
-	 ,minifyCss 		=  require('gulp-minify-css')
 	 ,deploy				=  require('gulp-gh-pages');
 
 
@@ -86,12 +85,19 @@ gulp.task('watch', function () {
   gulp.watch('app/src/styl/*.styl', ['stylus']);
 });
 
-// just run gulp deploy-pages to send build files to gh-pages
-//gulp.task('deploy-pages', function () {
-  //return gulp.src("build/**/*")
-    //.pipe(deploy());
-//});
 
-// Olhar na documentação como usar o módulo deploy-pages
+//...... just run gulp deploy-pages to send build files to gh-pages ......
 
-gulp.task('default', ['stylus', 'fonts','watch', 'imagemin', 'scripts', 'css', 'html', 'browser-sync']);
+gulp.task('deploy-pages', function () {
+  return gulp.src("build/**/*")
+    .pipe(deploy());
+});
+
+
+//...... This is our runner task ......
+
+gulp.task('default', ['stylus', 'watch', 'imagemin', 'scripts', 'html', 'browser-sync']);
+
+//...... Runner Deploy task ......
+
+gulp.task('gulp-deploy',['deploy-pages']);
