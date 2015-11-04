@@ -1,5 +1,7 @@
 'use strict';
 
+//...... Load all of our dependencies ......
+
 var gulp 					=  require('gulp')
 	 ,plumber				=  require('gulp-plumber')
 	 ,stylus 				=  require('gulp-stylus')
@@ -17,15 +19,14 @@ var gulp 					=  require('gulp')
 	 ,deploy				=  require('gulp-gh-pages');
 
 
-
-
+//...... Launch the Server and reload browsers ......
 
 gulp.task('browser-sync', function () {
    var files = [
-      'app/**/*.html',
-      'app/src/css/**/*.css',
-      'app/src/img/**/*',
-      'app/src/js/**/*.js'
+       'app/**/*.html'
+      ,'app/src/css/**/*.css'
+      ,'app/src/img/**/*'
+      ,'app/src/js/**/*.js'
    ];
 
    browserSync.init(files, {
@@ -35,16 +36,16 @@ gulp.task('browser-sync', function () {
    });
 });
 
+
+//...... Imagemin Task - compressing images ......
+
 gulp.task('imagemin', function() {
 	return gulp.src('app/src/img/**/*')
 		.pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
 		.pipe(gulp.dest('build/img'));
 });
 
-gulp.task('fonts', function(){
-    gulp.src('app/src/fonts/**/*')
-    .pipe(gulp.dest('build/fonts'))
-});
+
 
 gulp.task('scripts', function(){
 	gulp.src('app/src/js/*.js')
