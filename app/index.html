@@ -5,10 +5,33 @@
     <title></title>
     <link rel="stylesheet" href="css/plugins.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 </head>
 <body>
-   <h1>Seja bem Vindo ao Dialetus Project</h1>
+   <div id="content"></div>
    <h2>Em breve uma página Sensacional nesse endereço! </h2>
+
    <script src="js/all.min.js"></script>
+    <script type="text/babel">
+      /* 
+         criando component, todas as informações e funções relacionadas e esse componente
+      	 devem ficar dentro da própria classe
+      */
+	var WelcomeMsg = React.createClass({
+	  render: function() {
+	    return (
+	      <h1>
+	        Seja bem Vindo ao Projeto Dialetus
+	      </h1>
+	    );
+	  }
+	});
+	ReactDOM.render(
+	  <WelcomeMsg />,
+	  document.getElementById('content')
+	);
+    </script>
 </body>
 </html>
