@@ -1,37 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="css/plugins.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/plugins.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 </head>
 <body>
-   <div id="content"></div>
-   <h2>Em breve uma página Sensacional nesse endereço! </h2>
+	<div id="content"></div>
+	<script src="js/all.min.js"></script>
+	<script type="text/babel">
 
-   <script src="js/all.min.js"></script>
-    <script type="text/babel">
-      /* 
-         criando component, todas as informações e funções relacionadas e esse componente
-      	 devem ficar dentro da própria classe
-      */
-	var WelcomeMsg = React.createClass({
-	  render: function() {
-	    return (
-	      <h1>
-	        Seja bem Vindo ao Projeto Dialetus
-	      </h1>
-	    );
-	  }
+	var FilterCards = React.createClass({
+		render: function() {
+			var result = [];
+			this.props.cardObject.forEach(function(card) {
+				result.push(<Card nome={card.nome} origem={card.origem} significado={card.significado} />);
+			});
+			return (
+				<div>
+					{result}
+				</div>
+			);
+		} 
 	});
-	ReactDOM.render(
-	  <WelcomeMsg />,
-	  document.getElementById('content')
-	);
-    </script>
+
+		var Card = React.createClass({
+			render: function() {
+				return (
+					<div> 
+						<p>Card</p>
+						<p>Nome: {this.props.nome}</p>
+						<p>Origem: {this.props.origem}</p>
+						<p>significado: {this.props.significado}</p>
+					</div>
+					);
+			}
+		});
+
+		var WelcomeMsg = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<h1> Seja bem Vindo ao Projeto Dialetus </h1>
+						<h2> Em breve uma página Sensacional nesse Projeto </h2>
+					</div>
+					);
+			}
+		});
+
+		var Dialetus = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<WelcomeMsg />
+						<FilterCards cardObject={this.props.cardObject} />
+					</div>
+				);
+			}
+		});
+
+		var CARDS = [
+		{nome: 'barril', origem:'bahia', significado:'foda, legal demais', relacionados:['barriado']},
+		{nome: 'fragar', origem:'minas gerais', significado:'ver, observar', relacionados:['manja']}
+		];
+
+		ReactDOM.render(
+			<Dialetus cardObject = {CARDS} />,
+			document.getElementById('content')
+			);
+
+	</script>
 </body>
 </html>
